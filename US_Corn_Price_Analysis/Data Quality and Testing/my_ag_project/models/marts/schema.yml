@@ -1,0 +1,38 @@
+version: 2
+
+models:
+  - name: fct_corn_yield_features
+    description: "Final features table for Corn Yield Prediction Model. 1986-2024."
+    columns:
+      - name: year
+        tests:
+          - unique
+          - not_null
+
+      # Checklist: "Completeness - Not Null tests on all key features"
+      - name: yield_per_acre
+        tests:
+          - not_null
+
+      - name: stocks_to_use_ratio
+        tests:
+          - not_null
+          # Checklist: "Ratio must be positive"
+          - dbt_utils.expression_is_true:
+              arguments:
+                expression: ">= 0"
+
+      - name: total_annual_precip
+        tests:
+          - not_null
+          - dbt_utils.expression_is_true:
+              arguments:
+                expression: ">= 0"
+
+      - name: avg_condition_index
+        tests:
+          - not_null
+
+      - name: avg_max_temp
+        tests:
+          - not_null

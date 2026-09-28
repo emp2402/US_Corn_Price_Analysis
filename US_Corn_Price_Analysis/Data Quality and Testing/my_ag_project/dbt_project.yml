@@ -1,0 +1,61 @@
+# Name your project! Project names should contain only lowercase characters
+# and underscores. A good package name should reflect your organization's
+# name or the intended use of these models
+name: 'my_ag_project'
+version: '1.0.0'
+
+# This setting configures which "profile" dbt uses for this project.
+profile: 'my_ag_project'
+
+# These configurations specify where dbt should look for different types of files.
+# The `model-paths` config, for example, states that models in this project can be
+# found in the "models/" directory. You probably won't need to change these!
+model-paths: ["models"]
+analysis-paths: ["analyses"]
+test-paths: ["tests"]
+seed-paths: ["seeds"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
+
+clean-targets:         # directories to be removed by `dbt clean`
+  - "target"
+  - "dbt_packages"
+
+
+# Configuring models
+# Full documentation: https://docs.getdbt.com/docs/configuring-models
+
+# In this example config, we tell dbt to build all models in the example/
+# directory as views. These settings can be overridden in the individual model
+# files using the `{{ config(...) }}` macro.
+
+
+
+# -------------------------------------------------------------------------
+# FIXED SEEDS CONFIGURATION
+# -------------------------------------------------------------------------
+seeds:
+  my_ag_project:
+    raw_wasde_corn:
+      +column_types:
+        year: int64
+        actual_yield: float64
+        planted_acres: float64
+        harvested_acres: float64
+        production: float64
+        stocks: float64
+        exports: float64
+        imports: float64
+        total_supply: float64
+        total_usage: float64
+        ending_stocks: float64
+
+    raw_quickstats_planting:
+      +column_types:
+        pct_planted: float64
+
+    raw_noaa:
+      +column_types:
+        precip: float64
+        tmax: float64
+        tmin: float64
