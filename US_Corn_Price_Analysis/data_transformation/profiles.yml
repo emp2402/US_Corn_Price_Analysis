@@ -1,0 +1,11 @@
+corn_market_project:
+  target: dev
+  outputs:
+    dev:
+      type: bigquery
+      method: service-account
+      project: us-corn-data
+      dataset: us_corn_data_transformed
+      threads: 1
+      keyfile: "{{ env_var('DBT_GOOGLE_KEYFILE') }}"
+      location: US

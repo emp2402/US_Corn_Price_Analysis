@@ -1,0 +1,12 @@
+version: 2
+
+sources:
+  - name: raw_corn_data
+    database: us-corn-data
+    schema: us_corn_data
+    tables:
+      - name: us_corn_prices
+      - name: us_corn_supply_demand
+      - name: us_corn_conditions
+      - name: us_corn_plantings
+      - name: us_climate_data
