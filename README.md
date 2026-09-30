@@ -98,5 +98,4 @@
         <li><strong>Data Granularity Normalization.</strong> Crop condition and progress datasets natively collected at weekly intervals were aggregated to annual features linked to specific crop phenology stages (e.g., 50% planting day of year).</li>
         <li><strong>Missing Feature Exclusion.</strong> Years with missing or incomplete agronomic/climatic variable coverage were excluded from the final joined mart model using inner-join constraints to preserve statistical integrity.</li>
         <li><strong>Exclusion of Forecast Estimates.</strong> To maintain deterministic historical accuracy, USDA WASDE forward-looking estimate years (such as 2025 estimates) were explicitly filtered out during ingestion.</li>
-        <li><strong>GCP Sandbox Restrictions.</strong> Compute environments utilized Google Cloud BigQuery Sandbox configurations; large-scale transformations were optimized within storage quotas without loss of operational fidelity.</li>
     </ul>
